@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>আল-কুরআন ও হাদীস লাইব্রেরি</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Scheherazade+New:wght@400;700&family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -32,139 +31,146 @@
         .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
 
         /* Navigation Tabs */
-        .tab-bar {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px 0;
-        }
+        .tab-bar { display: flex; justify-content: center; gap: 15px; padding: 20px 0; }
         .tab-btn {
-            padding: 12px 25px;
-            border: none;
-            background: white;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--primary-dark);
-            box-shadow: var(--shadow-sm);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding: 12px 25px; border: none; background: white; border-radius: 50px;
+            cursor: pointer; font-weight: 700; color: var(--primary-dark);
+            box-shadow: var(--shadow-sm); transition: 0.3s; display: flex; align-items: center; gap: 10px;
         }
         .tab-btn.active { background: var(--emerald); color: white; }
 
-        /* Header */
+        /* Header & Glass Nav */
         .top-header { position: sticky; top: 10px; z-index: 1000; margin-bottom: 30px; }
         .glass-nav {
-            background: var(--glass-white);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 12px 25px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
+            background: var(--glass-white); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.4); padding: 12px 25px; border-radius: 50px;
+            display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);
+            flex-wrap: wrap; gap: 10px;
         }
 
-        .font-controls { display: flex; align-items: center; gap: 8px; background: #f1f5f9; padding: 5px 12px; border-radius: 25px; }
+        .font-controls-group { display: flex; gap: 15px; align-items: center; }
+        .font-unit { display: flex; align-items: center; gap: 5px; background: #f1f5f9; padding: 5px 10px; border-radius: 20px; font-size: 13px; }
         .font-btn { 
-            background: white; border: 1px solid #ddd; width: 28px; height: 28px; 
-            border-radius: 50%; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center;
+            background: white; border: 1px solid #ddd; width: 24px; height: 24px; 
+            border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
-        .font-btn:hover { background: var(--emerald); color: white; }
 
         #backBtn {
             background: var(--gold); color: white; border: none; padding: 8px 15px;
             border-radius: 20px; cursor: pointer; display: none; align-items: center; gap: 8px;
         }
 
-        /* Selectors */
         select, input {
             border: none; background: #f1f5f9; padding: 10px 15px;
             border-radius: 25px; font-family: inherit; cursor: pointer; color: var(--primary-dark); font-weight: 500;
         }
 
-        /* Ayah/Hadith Cards */
-        .card {
-            background: white; margin-bottom: 25px; padding: 35px;
-            border-radius: 25px; box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
+        /* Cards */
+       /* কার্ডের মূল কন্টেইনার */
 
-        .arabic {
-            font-family: 'Amiri', serif; font-size: var(--arabic-size);
-            text-align: right; line-height: 2.2; color: #0f172a;
-            direction: rtl; margin-bottom: 20px;
-        }
 
-        .translation {
-            font-size: var(--bangla-size);
-            color: #475569; line-height: 1.8; background: #f8fafc;
-            padding: 20px; border-radius: 15px; border-right: 5px solid var(--emerald);
-        }
+/* কার্ডের ভেতরের প্যাডিং কমিয়ে আনা */
+.card {
+    background: white;
+    margin-bottom: 12px;
+    padding: 15px 20px; /* ওপর-নিচে ১৫ এবং ডানে-বামে ২০ পিক্সেল */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
 
-        audio { width: 100%; margin-top: 20px; height: 35px; }
+/* আয়াতের নম্বরের মার্জিন কমানো */
+.ayah-header {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 5px; /* আরবী টেক্সটের সাথে গ্যাপ কমানো */
+}
 
-        /* Hero Screen */
+/* আরবী টেক্সটের স্টাইল ও ফাঁকা জায়গা কমানো */
+.arabic {
+    font-family: 'Scheherazade New', serif;
+    font-size: var(--arabic-size);
+    text-align: right;
+    line-height: 1.4; /* লাইনের মাঝের গ্যাপ কমানো */
+    color: #1e293b;
+    direction: rtl;
+    margin: 0 0 10px 0; /* আরবীর নিচে মাত্র ১০ পিক্সেল গ্যাপ */
+}
+
+/* অনুবাদ বক্সের প্যাডিং ও মার্জিন */
+.translation {
+    font-size: var(--bangla-size);
+    color: #475569;
+    line-height: 1.5;
+    background: #f1f5f9;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border-right: 4px solid var(--emerald);
+    margin-bottom: 8px;
+}
+
+/* অডিও প্লেয়ারের উচ্চতা ও গ্যাপ */
+audio {
+    width: 100%;
+    height: 30px;
+    margin-top: 5px;
+}
+       
+
         .hero-card {
             background: linear-gradient(135deg, var(--primary-dark), var(--emerald));
             padding: 50px; border-radius: 35px; display: flex;
             justify-content: space-between; align-items: center; color: white;
-            box-shadow: 0 20px 40px rgba(6, 78, 59, 0.2);
-            margin-bottom: 20px;
+            box-shadow: 0 20px 40px rgba(6, 78, 59, 0.2); margin-bottom: 20px;
         }
-        .hero-img img { width: 150px; }
+        .hero-img img { width: 120px; }
 
-        /* Hadith Browse Grid */
-        .browse-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
+        .browse-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
         .book-card {
             background: white; padding: 20px; border-radius: 20px; text-align: center;
-            cursor: pointer; transition: 0.3s; box-shadow: var(--shadow-sm);
-            border: 1px solid #e2e8f0;
+            cursor: pointer; transition: 0.3s; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0;
         }
         .book-card:hover { transform: translateY(-5px); border-color: var(--emerald); }
         .book-card i { font-size: 2rem; color: var(--emerald); margin-bottom: 10px; }
-        .book-card h4 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
 
-        /* --- Mobile Responsive (ফোনের জন্য বিশেষ কোড) --- */
+        /* See More Button Style */
+        .see-more-container { text-align: center; margin: 30px 0; }
+        .see-more-btn {
+            background: var(--primary-dark); color: white; border: none; padding: 12px 30px;
+            border-radius: 50px; cursor: pointer; font-weight: bold; font-family: inherit;
+            transition: 0.3s; box-shadow: var(--shadow-sm);
+        }
+        .see-more-btn:hover { background: var(--emerald); transform: scale(1.05); }
+/* মোবাইল স্ক্রিনের জন্য বিশেষ সেটিংস */
+@media (max-width: 600px) {
+    .arabic {
+        line-height: 2.2 !important; /* লাইনের মাঝের গ্যাপ বাড়িয়ে দেওয়া হয়েছে */
+        word-spacing: 8px;           /* একটি শব্দ থেকে অন্য শব্দের দূরত্ব বাড়ানো হয়েছে */
+        padding-top: 10px;           /* ওপরের ফাঁকা জায়গা সামঞ্জস্য করা */
+        padding-bottom: 10px;
+        text-align: right;           /* লেখাগুলো ডান দিক থেকে শুরু হবে */
+    }
+
+    .card {
+        padding: 12px 15px;         /* কার্ডের ভেতরের প্যাডিং মোবাইলে আরও কমানো হয়েছে */
+    }
+
+    .translation {
+        line-height: 1.6;           /* বাংলা অর্থও যাতে ঘিঞ্জি না লাগে */
+    }
+}
         @media (max-width: 768px) {
-            .container { padding: 0 10px; }
-            .tab-bar { gap: 8px; padding: 15px 0; }
-            .tab-btn { padding: 10px 15px; font-size: 14px; }
-            
-            .top-header { top: 5px; }
-            .glass-nav { padding: 8px 12px; border-radius: 15px; gap: 5px; }
-            
-            #surahSelect { width: 160px; font-size: 13px; padding: 8px; }
-            #bookSelect { width: 85px !important; padding: 8px; font-size: 12px; }
-            #hadithNo { width: 40px !important; padding: 8px; font-size: 12px; }
-            .font-controls { padding: 4px 8px; }
-            .font-controls span { display: none; } /* ফোনে 'ফন্ট:' লেখা লুকানো */
-
-            .hero-card { flex-direction: column-reverse; text-align: center; padding: 30px 20px; }
-            .hero-img img { width: 100px; margin-bottom: 15px; }
-            .hero-content h1 { font-size: 1.6rem; }
-
-            .card { padding: 20px 15px; border-radius: 15px; margin-bottom: 15px; }
-            .arabic { font-size: calc(var(--arabic-size) * 0.8); line-height: 1.8; }
-            .translation { padding: 15px; font-size: 0.95rem; }
-            
-            .browse-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .book-card { padding: 15px 10px; }
+            .glass-nav { border-radius: 20px; justify-content: center; }
+            .hero-card { flex-direction: column-reverse; text-align: center; padding: 30px; }
+            .hero-img img { width: 80px; margin-bottom: 15px; }
+            .font-controls-group { width: 100%; justify-content: center; }
         }
 
         .loader {
-            width: 40px; height: 40px; border: 3px solid #e2e8f0;
-            border-top-color: var(--emerald); border-radius: 50%;
-            animation: spin 1s infinite linear; position: fixed; top: 50%; left: 50%;
+            width: 40px; height: 40px; border: 3px solid #e2e8f0; border-top-color: var(--emerald);
+            border-radius: 50%; animation: spin 1s infinite linear; position: fixed; top: 50%; left: 50%; z-index: 2000;
         }
         @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
         .hidden { display: none !important; }
@@ -184,23 +190,30 @@
 
         <header class="top-header">
             <div class="glass-nav">
-                <div class="font-controls">
-                    <span>ফন্ট:</span>
-                    <button class="font-btn" onclick="changeFontSize(-2)">-</button>
-                    <button class="font-btn" onclick="changeFontSize(2)">+</button>
+                <div class="font-controls-group">
+                    <div class="font-unit">
+                        <span>আরবী</span>
+                        <button class="font-btn" onclick="changeFontSize('ar', -2)">-</button>
+                        <button class="font-btn" onclick="changeFontSize('ar', 2)">+</button>
+                    </div>
+                    <div class="font-unit">
+                        <span>বাংলা</span>
+                        <button class="font-btn" onclick="changeFontSize('bn', -0.1)">-</button>
+                        <button class="font-btn" onclick="changeFontSize('bn', 0.1)">+</button>
+                    </div>
                 </div>
 
                 <button id="backBtn" onclick="goHome()">
-                    <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i> ফিরে যান
                 </button>
 
                 <div id="quranSearch">
                     <select id="surahSelect">
-                        <option value="">সূরা নির্বাচন...</option>
+                        <option value="">সূরা নির্বাচন করুন...</option>
                     </select>
                 </div>
 
-                <div id="hadithSearch" class="hidden" style="display: flex; gap: 5px; align-items: center;">
+                <div id="hadithSearch" class="hidden">
                     <select id="bookSelect">
                         <option value="bukhari">বুখারী</option>
                         <option value="muslim">মুসলিম</option>
@@ -209,8 +222,8 @@
                         <option value="nasai">নাসায়ী</option>
                         <option value="ibnmajah">ইবনে মাজাহ</option>
                     </select>
-                    <input type="number" id="hadithNo" placeholder="নং">
-                    <button onclick="loadHadith()" style="border:none; background:var(--emerald); color:white; padding:8px 12px; border-radius:20px; cursor:pointer;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="number" id="hadithNo" placeholder="নম্বর" style="width: 60px;">
+                    <button onclick="loadSingleHadith()" style="border:none; background:var(--emerald); color:white; padding:10px 15px; border-radius:20px; cursor:pointer;"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
         </header>
@@ -222,8 +235,7 @@
                 <div class="hero-card">
                     <div class="hero-content">
                         <h1 id="heroTitle">পবিত্র কুরআনুল কারীম</h1>
-                        <p id="heroDesc">অনুবাদ ও অডিওসহ ডিজিটাল সংস্করণ</p>
-                        <div id="heroFooter" style="margin-top: 15px; opacity: 0.8;">মারকাজুল কুরআন</div>
+                        <p id="heroDesc">সহজ বাংলা অনুবাদ ও অডিওসহ</p>
                     </div>
                     <div class="hero-img">
                         <img id="heroImg" src="https://cdn-icons-png.flaticon.com/512/2950/2950000.png" alt="Icon">
@@ -231,37 +243,15 @@
                 </div>
 
                 <div id="hadithBrowse" class="hidden">
-                    <h3 style="margin-bottom: 20px; color: var(--primary-dark);"><i class="fa-solid fa-layer-group"></i> হাদীস গ্রন্থসমূহ ব্রাউজ করুন</h3>
-                    <div class="browse-grid">
-                        <div class="book-card" onclick="browseBook('bukhari')">
-                            <i class="fa-solid fa-book"></i>
-                            <h4>সহীহ বুখারী</h4>
-                        </div>
-                        <div class="book-card" onclick="browseBook('muslim')">
-                            <i class="fa-solid fa-book"></i>
-                            <h4>সহীহ মুসলিম</h4>
-                        </div>
-                        <div class="book-card" onclick="browseBook('tirmidhi')">
-                            <i class="fa-solid fa-book"></i>
-                            <h4>সূনানে তিরমিজী</h4>
-                        </div>
-                        <div class="book-card" onclick="browseBook('abudawud')">
-                            <i class="fa-solid fa-book"></i>
-                            <h4>আবু দাউদ</h4>
-                        </div>
-                        <div class="book-card" onclick="browseBook('nasai')">
-                            <i class="fa-solid fa-book"></i>
-                            <h4>সূনানে নাসায়ী</h4>
-                        </div>
-                        <div class="book-card" onclick="browseBook('ibnmajah')">
-                            <i class="fa-solid fa-book"></i>
-                            <h4>ইবনে মাজাহ</h4>
-                        </div>
-                    </div>
+                    <h3 style="color: var(--primary-dark); margin-bottom: 15px;">হাদীস গ্রন্থসমূহ</h3>
+                    <div class="browse-grid" id="browseGrid"></div>
                 </div>
             </section>
             
             <div id="displayArea"></div>
+            <div id="seeMoreContainer" class="see-more-container hidden">
+                <button class="see-more-btn" onclick="loadMoreHadiths()">আরো দেখুন <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
         </main>
     </div>
 
@@ -274,54 +264,53 @@
         const backBtn = document.getElementById('backBtn');
         const quranSearch = document.getElementById('quranSearch');
         const hadithSearch = document.getElementById('hadithSearch');
-        
+        const seeMoreContainer = document.getElementById('seeMoreContainer');
+
         let currentTab = 'quran';
-        let currentArabicSize = 35;
-        let currentBanglaSize = 1.1;
+        let arSize = 35;
+        let bnSize = 1.1;
+
+        // হাদীস লোডিং ট্র্যাকার
+        let currentBook = '';
+        let lastLoadedHadith = 0;
 
         function switchTab(tab) {
             currentTab = tab;
             document.getElementById('tabQuran').classList.toggle('active', tab === 'quran');
             document.getElementById('tabHadith').classList.toggle('active', tab === 'hadith');
-            
-            quranSearch.classList.toggle('hidden', tab !== 'quran');
-            hadithSearch.classList.toggle('hidden', tab !== 'hadith');
-            hadithBrowse.classList.toggle('hidden', tab !== 'hadith');
-            
             goHome();
-
+            
             if(tab === 'hadith') {
                 document.getElementById('heroTitle').innerText = "আল-হাদীস লাইব্রেরি";
-                document.getElementById('heroDesc').innerText = "সহীহ বুখারী, মুসলিম ও অন্যান্য গ্রন্থ";
+                document.getElementById('heroDesc').innerText = "সহীহ হাদীসসমূহ";
                 document.getElementById('heroImg').src = "https://cdn-icons-png.flaticon.com/512/2702/2702134.png";
+                renderHadithBooks();
             } else {
                 document.getElementById('heroTitle').innerText = "পবিত্র কুরআনুল কারীম";
-                document.getElementById('heroDesc').innerText = "অনুবাদ ও অডিওসহ ডিজিটাল সংস্করণ";
+                document.getElementById('heroDesc').innerText = "সহজ বাংলা অনুবাদ ও অডিওসহ";
                 document.getElementById('heroImg').src = "https://cdn-icons-png.flaticon.com/512/2950/2950000.png";
             }
         }
 
-        function changeFontSize(delta) {
-            currentArabicSize += delta;
-            currentBanglaSize += delta * 0.05;
-            if(currentArabicSize < 20) currentArabicSize = 20;
-            if(currentArabicSize > 70) currentArabicSize = 70;
-            document.documentElement.style.setProperty('--arabic-size', currentArabicSize + 'px');
-            document.documentElement.style.setProperty('--bangla-size', currentBanglaSize + 'rem');
+        function changeFontSize(type, delta) {
+            if(type === 'ar') {
+                arSize += delta;
+                document.documentElement.style.setProperty('--arabic-size', arSize + 'px');
+            } else {
+                bnSize += delta;
+                document.documentElement.style.setProperty('--bangla-size', bnSize + 'rem');
+            }
         }
 
         function goHome() {
             displayArea.innerHTML = '';
             welcomeScreen.classList.remove('hidden');
             backBtn.style.display = 'none';
-            if(currentTab === 'quran') {
-                quranSearch.style.display = 'block';
-                hadithBrowse.classList.add('hidden');
-            } else {
-                hadithSearch.style.display = 'flex';
-                hadithBrowse.classList.remove('hidden');
-            }
-            window.scrollTo(0, 0);
+            seeMoreContainer.classList.add('hidden');
+            quranSearch.style.display = (currentTab === 'quran') ? 'block' : 'none';
+            hadithSearch.style.display = (currentTab === 'hadith') ? 'flex' : 'none';
+            hadithBrowse.classList.toggle('hidden', currentTab !== 'hadith');
+            window.scrollTo(0,0);
         }
 
         async function loadSurahList() {
@@ -329,118 +318,146 @@
                 const res = await fetch('https://api.alquran.cloud/v1/surah');
                 const data = await res.json();
                 data.data.forEach(surah => {
-                    const option = document.createElement('option');
-                    option.value = surah.number;
-                    // আগের মতো বিস্তারিত নাম রাখা হলো
-                    option.textContent = `${surah.number}. ${surah.name} (${surah.englishName})`;
-                    surahSelect.appendChild(option);
+                    const opt = document.createElement('option');
+                    opt.value = surah.number;
+                    opt.textContent = `${surah.number}. ${surah.name} (${surah.englishName})`;
+                    surahSelect.appendChild(opt);
                 });
-            } catch (e) { console.error("Error loading Surah list"); }
+            } catch (e) { console.error("API Error"); }
         }
 
         surahSelect.addEventListener('change', async (e) => {
-            const surahNumber = e.target.value;
-            if (!surahNumber) return;
+            const num = e.target.value;
+            if (!num) return;
 
             loading.classList.remove('hidden');
             welcomeScreen.classList.add('hidden');
-            displayArea.innerHTML = '';
             backBtn.style.display = 'flex';
             quranSearch.style.display = 'none';
 
             try {
                 const [arRes, bnRes, audioRes] = await Promise.all([
-                    fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/quran-indopak`),
-                    fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/bn.bengali`),
-                    fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`)
+                    fetch(`https://api.alquran.cloud/v1/surah/${num}/quran-indopak`),
+                    fetch(`https://api.alquran.cloud/v1/surah/${num}/bn.bengali`),
+                    fetch(`https://api.alquran.cloud/v1/surah/${num}/ar.alafasy`)
                 ]);
 
                 const arData = await arRes.json();
                 const bnData = await bnRes.json();
                 const audioData = await audioRes.json();
 
-                arData.data.ayahs.forEach((ayah, index) => {
-                    const ayahCard = document.createElement('div');
-                    ayahCard.className = 'card';
-                    let arabicText = ayah.text;
-                    if (surahNumber != 1 && surahNumber != 9 && index === 0) {
-                        const bismillah = "بِسْمِ اللَّهِ الرَّحْمَٰনِ الرَّحِيمِ";
-                        if (arabicText.startsWith(bismillah)) arabicText = arabicText.substring(bismillah.length).trim();
+                arData.data.ayahs.forEach((ayah, i) => {
+                    let text = ayah.text;
+                    let trans = bnData.data.ayahs[i].text;
+
+                    if (num != 1 && num != 9 && i === 0) {
+                        text = text.replace(/^بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ/g, "").trim();
+                        text = text.replace(/^بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ/g, "").trim();
+                        trans = trans.replace(/শুরু করছি পরম করুণাময় অসীম দয়ালু আল্লাহর নামে।/g, "").trim();
+                        trans = trans.replace(/শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।/g, "").trim();
                     }
-                    ayahCard.innerHTML = `
-                        <div style="color:var(--gold); font-weight:bold; margin-bottom:12px; font-size:0.9rem;">আয়াত: ${index + 1}</div>
-                        <div class="arabic">${arabicText}</div>
-                        <div class="translation"><b>অর্থ:</b> ${bnData.data.ayahs[index].text}</div>
-                        <audio controls preload="none"><source src="${audioData.data.ayahs[index].audio}" type="audio/mpeg"></audio>
+
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div style="color:var(--gold); font-weight:bold; margin-bottom:10px;">আয়াত: ${i+1}</div>
+                        <div class="arabic">${text}</div>
+                        <div class="translation"><b>অর্থ:</b> ${trans}</div>
+                        <audio controls preload="none"><source src="${audioData.data.ayahs[i].audio}" type="audio/mpeg"></audio>
                     `;
-                    displayArea.appendChild(ayahCard);
+                    displayArea.appendChild(card);
                 });
-            } catch (error) { alert('তথ্য লোড করতে সমস্যা হয়েছে।'); goHome(); }
+            } catch (err) { alert("লোড করা যায়নি"); goHome(); }
             loading.classList.add('hidden');
         });
 
-        async function loadHadith() {
-            const book = document.getElementById('bookSelect').value;
-            const no = document.getElementById('hadithNo').value;
-            if(!no) return alert("নম্বর দিন");
-            fetchAndRenderHadith(book, no);
+        function renderHadithBooks() {
+            const books = [
+                { id: 'bukhari', name: 'সহীহ বুখারী' },
+                { id: 'muslim', name: 'সহীহ মুসলিম' },
+                { id: 'tirmidhi', name: 'সূনানে তিরমিজী' },
+                { id: 'abudawud', name: 'আবু দাউদ' },
+                { id: 'nasai', name: 'সূনানে নাসায়ী' },
+                { id: 'ibnmajah', name: 'ইবনে মাজাহ' }
+            ];
+            const grid = document.getElementById('browseGrid');
+            grid.innerHTML = '';
+            books.forEach(b => {
+                grid.innerHTML += `
+                    <div class="book-card" onclick="initHadithLoad('${b.id}')">
+                        <i class="fa-solid fa-book"></i>
+                        <h4>${b.name}</h4>
+                        <small>পড়তে ক্লিক করুন</small>
+                    </div>
+                `;
+            });
         }
 
-        async function browseBook(bookCode) {
+        // হাদীস লোডিং শুরু (প্রথম ৫০টি)
+        function initHadithLoad(bookId) {
+            displayArea.innerHTML = '';
+            currentBook = bookId;
+            lastLoadedHadith = 0;
+            loadMoreHadiths(20); // শুরুতে ৫০টি
+        }
+
+        // See More ফাংশন (পরবর্তীতে ১০০টি করে)
+        async function loadMoreHadiths(count = 50) {
             loading.classList.remove('hidden');
             welcomeScreen.classList.add('hidden');
-            displayArea.innerHTML = `<h2 style="text-align:center; color:var(--primary-dark); margin-bottom:20px;">${bookCode.toUpperCase()} এর হাদীসসমূহ</h2>`;
             backBtn.style.display = 'flex';
             hadithSearch.style.display = 'none';
+            seeMoreContainer.classList.add('hidden');
 
-            try {
-                for(let i=1; i<=10; i++) {
-                    const bnRes = await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ben-${bookCode}/${i}.json`);
-                    const arRes = await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-${bookCode}/${i}.json`);
+            const start = lastLoadedHadith + 1;
+            const end = lastLoadedHadith + count;
+
+            let loadedAny = false;
+
+            for(let i = start; i <= end; i++) {
+                try {
+                    const [bn, ar] = await Promise.all([
+                        fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ben-${currentBook}/${i}.json`),
+                        fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-${currentBook}/${i}.json`)
+                    ]);
                     
-                    if(bnRes.ok && arRes.ok) {
-                        const bnData = await bnRes.json();
-                        const arData = await arRes.json();
+                    if(bn.ok && ar.ok) {
+                        const bD = await bn.json();
+                        const aD = await ar.json();
                         const card = document.createElement('div');
                         card.className = 'card';
-                        card.innerHTML = `
-                            <div style="color:var(--gold); font-weight:bold; margin-bottom:15px;">হাদীস নম্বর: ${i}</div>
-                            <div class="arabic">${arData.hadiths[0].text}</div>
-                            <div class="translation"><b>অনুবাদ:</b><br><br>${bnData.hadiths[0].text}</div>
-                        `;
+                       card.innerHTML = `
+    <div class="ayah-header">আয়াত: ${i+1}</div>
+    <div class="arabic">${text}</div>
+    <div class="translation"><b>অর্থ:</b> ${trans}</div>
+    <audio controls preload="none"><source src="${audioUrl}" type="audio/mpeg"></audio>
+`;
                         displayArea.appendChild(card);
+                        lastLoadedHadith = i;
+                        loadedAny = true;
+                    } else {
+                        // যদি আর হাদীস না থাকে
+                        break;
                     }
-                }
-            } catch (e) { displayArea.innerHTML += "<div class='card'>তথ্য লোড করতে সমস্যা হয়েছে।</div>"; }
+                } catch(e) { break; }
+            }
+
             loading.classList.add('hidden');
+            if(loadedAny) {
+                seeMoreContainer.classList.remove('hidden');
+            }
         }
 
-        async function fetchAndRenderHadith(book, no) {
-            loading.classList.remove('hidden');
-            welcomeScreen.classList.add('hidden');
+        async function loadSingleHadith() {
+            const b = document.getElementById('bookSelect').value;
+            const n = document.getElementById('hadithNo').value;
+            if(!n) return alert("নম্বর দিন");
+            
             displayArea.innerHTML = '';
-            backBtn.style.display = 'flex';
-            hadithSearch.style.display = 'none';
-
-            try {
-                const [bnRes, arRes] = await Promise.all([
-                    fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ben-${book}/${no}.json`),
-                    fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-${book}/${no}.json`)
-                ]);
-                
-                if(bnRes.ok && arRes.ok) {
-                    const bnData = await bnRes.json();
-                    const arData = await arRes.json();
-                    displayArea.innerHTML = `
-                        <div class="card">
-                            <div style="color:var(--gold); font-weight:bold; margin-bottom:15px;">হাদীস নম্বর: ${no} (${book})</div>
-                            <div class="arabic">${arData.hadiths[0].text}</div>
-                            <div class="translation"><b>অনুবাদ:</b><br><br>${bnData.hadiths[0].text}</div>
-                        </div>
-                    `;
-                } else { displayArea.innerHTML = "<div class='card'>হাদীস পাওয়া যায়নি। সঠিক নম্বর ট্রাই করুন।</div>"; }
-            } catch (e) { displayArea.innerHTML = "<div class='card'>তথ্য লোড করতে সমস্যা হয়েছে।</div>"; }
-            loading.classList.add('hidden');
+            currentBook = b;
+            lastLoadedHadith = parseInt(n) - 1;
+            loadMoreHadiths(1); // শুধু ১টি লোড করবে
+            seeMoreContainer.classList.add('hidden'); // সিঙ্গেল সার্চে See More দরকার নেই
         }
 
         loadSurahList();
